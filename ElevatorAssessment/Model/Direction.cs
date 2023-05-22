@@ -9,6 +9,7 @@ namespace ElevatorAssessment.Model
     public enum Direction
     {
         Up = 1,
-        Down = -1
+        Down = -1,
+        STOPPED = 0,
     }
 }

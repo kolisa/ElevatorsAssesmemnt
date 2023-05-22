@@ -24,7 +24,7 @@ namespace ElevatorAssessment.Model
             {
                 return CurrentFloor == 1
                     ? Direction.Up
-                    : DestinationFloor > CurrentFloor ? Direction.Up : Direction.Down;
+                    : DestinationFloor > CurrentFloor ? Direction.Up : CurrentFloor == DestinationFloor ? Direction.STOPPED : Direction.Down;
             }
         }
 

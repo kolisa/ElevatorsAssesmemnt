@@ -36,6 +36,7 @@ namespace ElevatorAssessment.Repo
                     for (int i = 0; i < waitingPersons; i++) { e.Persons.Add(new Person(floorNumber, goalFloorNumber)); }
 
                 }
+                
             });
 
         }
