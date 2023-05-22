@@ -53,7 +53,7 @@ namespace ElevatorAssessment.Repo
                 if (e.Id == elevatorId) update(e);
                 return e;
             }).ToList();
-            //  Console.WriteLine(elevatorId);
+      
         }
 
         public void Step()
@@ -72,7 +72,7 @@ namespace ElevatorAssessment.Repo
                 return e;
             }).ToList();
 
-            // Embark passengers to available elevators
+            // Embark persons to available elevators
             WaitingPersons.GroupBy(r => new { r.OriginatingFloor, r.Direction }).ToList().ForEach(waitingFloor =>
             {
                 var availableElevator =
@@ -104,7 +104,7 @@ namespace ElevatorAssessment.Repo
                 }
                 else if (e.DestinationFloor == e.CurrentFloor && WaitingPersons.Any())
                 {
-                    // Lots of optimization could be done here, perhaps?
+                   
                     destinationFloor = WaitingPersons.GroupBy(r => new { r.OriginatingFloor }).OrderBy(g => g.Count()).First().Key.OriginatingFloor;
                 }
                 else
