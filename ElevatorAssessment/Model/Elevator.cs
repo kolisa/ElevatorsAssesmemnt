@@ -14,17 +14,17 @@ namespace ElevatorAssessment.Model
             Persons = new List<Person>();
         }
 
-        public int Id { get; private set; } = 1;
+        public int Id { get; private set; }
         public int CurrentFloor { get; set; }
         public int DestinationFloor { get; set; }
-        public int MaxNumberOfPersons { get; set; }
+        public int MaxNumberOfPersons { get; set; } = 50;
         public Direction Direction
         {
             get
             {
                 return CurrentFloor == 1
                     ? Direction.Up
-                    : DestinationFloor > CurrentFloor ? Direction.Up : CurrentFloor == DestinationFloor ? Direction.STOPPED : Direction.Down;
+                    : DestinationFloor > CurrentFloor ? Direction.Up : Direction.Down;
             }
         }
 

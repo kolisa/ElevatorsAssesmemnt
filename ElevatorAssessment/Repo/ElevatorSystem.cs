@@ -1,6 +1,7 @@
 ﻿using ElevatorAssessment.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,9 +35,8 @@ namespace ElevatorAssessment.Repo
                 {
                     e.Persons.Clear();
                     for (int i = 0; i < waitingPersons; i++) { e.Persons.Add(new Person(floorNumber, goalFloorNumber)); }
-
                 }
-                
+
             });
 
         }
@@ -44,7 +44,6 @@ namespace ElevatorAssessment.Repo
         public void Pickup(int pickupFloor, int destinationFloor)
         {
             WaitingPersons.Add(new Person(pickupFloor, destinationFloor));
-
         }
 
         private void UpdateElevator(int elevatorId, Action<Elevator> update)
@@ -54,7 +53,7 @@ namespace ElevatorAssessment.Repo
                 if (e.Id == elevatorId) update(e);
                 return e;
             }).ToList();
-      
+
         }
 
         public void Step()
@@ -84,7 +83,7 @@ namespace ElevatorAssessment.Repo
                 if (availableElevator != null)
                 {
                     busyElevatorIds.Add(availableElevator.Id);
-                    var embarkingPassengers = waitingFloor.ToList();
+                    var embarkingPassengers = waitingFloor.ToList(); 
                     UpdateElevator(availableElevator.Id, e => e.Persons.AddRange(embarkingPassengers));
                     WaitingPersons = WaitingPersons.Where(r => embarkingPassengers.All(er => er.Id != r.Id)).ToList();
                 }
@@ -105,7 +104,7 @@ namespace ElevatorAssessment.Repo
                 }
                 else if (e.DestinationFloor == e.CurrentFloor && WaitingPersons.Any())
                 {
-                   
+
                     destinationFloor = WaitingPersons.GroupBy(r => new { r.OriginatingFloor }).OrderBy(g => g.Count()).First().Key.OriginatingFloor;
                 }
                 else

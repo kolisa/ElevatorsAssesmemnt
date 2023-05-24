@@ -10,6 +10,6 @@ namespace ElevatorAssessment.Model
     {
         Up = 1,
         Down = -1,
-        STOPPED = 0,
+
     }
 }
