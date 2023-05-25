@@ -28,7 +28,7 @@ while (pickupCount < numberOfRequests)
 {
     var originatingFloor = random.Next(1, numberOfFloors + 1);
     var destinationFloor = random.Next(1, numberOfFloors + 1);
-    //Console.WriteLine($"from floor {originatingFloor} - to floor {destinationFloor}");
+  
     if (originatingFloor != destinationFloor)
     {
         system.Pickup(originatingFloor, destinationFloor);
